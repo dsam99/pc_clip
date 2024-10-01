@@ -170,8 +170,8 @@ def get_comparative_dataloaders(name, preprocess, batch_size=32):
         test_dataset = CIFAR10(root='./data/cifar10', train=False, download=False, transform=preprocess)
     
     elif name == "cifar100":
-        train_dataset = CIFAR100(root='/data/user_data/dylansam/datasets/cifar100', train=True, download=True, transform=preprocess)
-        test_dataset = CIFAR100(root='/data/user_data/dylansam/datasets/cifar100', train=False, download=True, transform=preprocess)
+        train_dataset = CIFAR100(root='./data/datasets/cifar100', train=True, download=True, transform=preprocess)
+        test_dataset = CIFAR100(root='./data/datasets/cifar100', train=False, download=True, transform=preprocess)
     
     elif name == "eurosat":
         train_test_dataset = EuroSAT(root='./data/', download=False, transform=preprocess)
@@ -231,20 +231,20 @@ def get_difference_dataloaders(name, preprocess, seed=0, batch_size=32):
 
     if name == "awa2":
         # train_dataset = AwA2DifferenceClassificationDataset("/scratch/shared/public_datasets/Animals_with_Attributes2/", preprocess=preprocess, split="train")
-        test_dataset = AwA2DifferenceClassificationDataset("/data/locus/project_data/project_data2/dylansam/datasets/Animals_with_Attributes2/", seed=seed, preprocess=preprocess, split="test")
+        test_dataset = AwA2DifferenceClassificationDataset("./data/datasets/Animals_with_Attributes2/", seed=seed, preprocess=preprocess, split="test")
 
     elif name == "awa2_size":
-        test_dataset = AwA2SizeClassificationDataset("/data/user_data/dylansam/datasets/Animals_with_Attributes2/", preprocess=preprocess, split="test")
+        test_dataset = AwA2SizeClassificationDataset("./data/datasets/Animals_with_Attributes2/", preprocess=preprocess, split="test")
 
     elif name == "cub":
         # train_dataset = CUBDifferenceClassificationDataset("/scratch/shared/public_datasets/CUB_200_2011/", preprocess=preprocess, split="train")
         test_dataset = CUBDifferenceClassificationTokens("./CLIP_prefix_caption/data/birds/ViT-L_14_test.pkl", seed=seed)
 
     elif name == "cifar100_size":
-        test_dataset = CIFAR100SizeClassificationDataset(path="/data/user_data/dylansam/datasets/cifar100", preprocess=preprocess, seed=seed, split="test")
+        test_dataset = CIFAR100SizeClassificationDataset(path="./data/datasets/cifar100", preprocess=preprocess, seed=seed, split="test")
 
     elif name == "flowers_color":
-        test_dataset = FlowersColorClassificationDataset(path="/data/user_data/dylansam/datasets/Flowers102/", preprocess=preprocess, seed=seed, split="test")
+        test_dataset = FlowersColorClassificationDataset(path="./data/datasets/Flowers102/", preprocess=preprocess, seed=seed, split="test")
 
     # train_loader = data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=1)
     test_loader = data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=1)
